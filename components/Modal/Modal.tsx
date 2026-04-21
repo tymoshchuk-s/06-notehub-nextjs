@@ -20,6 +20,13 @@ export default function Modal({ onClose, children }: ModalProps) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  useEffect(() => {
+  document.body.style.overflow = 'hidden';
+  return () => {
+    document.body.style.overflow = '';
+  };
+}, []);
+
   if (!modalRoot) return null;
 
   return ReactDOM.createPortal(

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/loading.module.css [app-rsc] (css module)"],"sourcesContent":["__turbopack_context__.v({\n  \"text\": \"loading-module__PBh0PW__text\",\n});\n"],"names":[],"mappings":"AAAA;AACA;AACA"}},
+    {"offset": {"line": 11, "column": 0}, "map": {"version":3,"sources":["file:///home/paris/Desktop/goit_projects/react.js%2Bnext.js/06-notehub-nextjs/app/loading.tsx"],"sourcesContent":["import css from \"./loading.module.css\";\nconst Loading = () => {\n  return <p className={css.text}>Loading, please wait...</p>;\n};\n\nexport default Loading;\n"],"names":[],"mappings":";;;;AAAA;;;AACA,MAAM,UAAU;IACd,qBAAO,8OAAC;QAAE,WAAW,0HAAA,CAAA,UAAG,CAAC,IAAI;kBAAE;;;;;;AACjC;uCAEe","debugId":null}}]
+}
