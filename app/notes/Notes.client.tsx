@@ -1,21 +1,109 @@
-import { QueryClient, dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import { fetchNotes } from '@/lib/api';
-import NotesClient from './Notes.client';
+"use client";
 
-export default async function NotesPage() {
-  const queryClient = new QueryClient();
+import { useState } from "react";
+import {
+  useQuery,
+  useQueryClient,
+  useMutation,
+  keepPreviousData,
+} from "@tanstack/react-query";
+import { fetchNotes, createNote, NotesHttpResponse } from "@/lib/api";
+import type { FormValues } from "@/types/note";
+import { useDebounce } from "@/hooks/useDebouncedValue";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import Pagination from "@/components/Pagination/Pagination";
+import NoteList from "@/components/NoteList/NoteList";
+import Modal from "@/components/Modal/Modal";
+import NoteForm from "@/components/NoteForm/NoteForm";
+import { Loader } from "@/components/Loader/Loader";
+import { ErrorMessageEmpty } from "@/components/ErrorMessageEmpty/ErrorMessageEmpty";
+import ToastContainer from "@/components/ToastContainer/ToastContainer";
+import toast from "react-hot-toast";
+import css from "../notes/NotesPage.module.css";
 
-  const page = 1;
-  const search = '';
+export default function NotesClient() {
+  const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 500);
+  const [page, setPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  await queryClient.prefetchQuery({
-    queryKey: ['notes', page, search],
-    queryFn: () => fetchNotes(search, page),
+  const queryClient = useQueryClient();
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<NotesHttpResponse>({
+    queryKey: ["notes", debouncedSearch, page],
+    queryFn: () => fetchNotes(debouncedSearch, page),
+    placeholderData: keepPreviousData,
   });
 
+  const createNoteMutation = useMutation({
+    mutationFn: (noteData: FormValues) => createNote(noteData),
+    onSuccess: () => {
+      toast.success("Note created successfully");
+      setPage(1);
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
+      setIsModalOpen(false);
+    },
+    onError: () => toast.error("Error creating note"),
+  });
+
+  const notes = data?.notes || [];
+  const pageCount = data?.totalPages || 1;
+
+  if (isError && error) throw error;
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient />
-    </HydrationBoundary>
+    <div className={css.app}>
+      <ToastContainer />
+
+      <header className={css.toolbar}>
+        <SearchBox
+          value={search}
+          onChange={(value) => {
+            setSearch(value);
+            setPage(1);
+          }}
+        />
+        {pageCount > 1 && (
+          <Pagination
+            totalPages={pageCount}
+            currentPage={page}
+            onPageChange={({ selected }) => setPage(selected + 1)}
+          />
+        )}
+        <button className={css.button} onClick={() => setIsModalOpen(true)}>
+          Create note +
+        </button>
+      </header>
+
+      {isLoading && <Loader />}
+
+      {!isLoading && !isError && (
+        <>
+          {notes.length > 0 ? (
+            <NoteList notes={notes} />
+          ) : (
+            <ErrorMessageEmpty />
+          )}
+        </>
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          {createNoteMutation.isPending ? (
+            <Loader />
+          ) : (
+            <NoteForm
+              onCancel={() => setIsModalOpen(false)}
+              onClose={() => setIsModalOpen(false)}
+            />
+          )}
+        </Modal>
+      )}
+    </div>
   );
 }

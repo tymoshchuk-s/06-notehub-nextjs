@@ -1,6 +1,6 @@
 {
   "pages": {
-    "/notes/page": [
+    "/notes/[id]/page": [
       "static/chunks/[root-of-the-server]__d4c09784._.css",
       "static/chunks/node_modules_f06849cb._.js",
       "static/chunks/components_TanStackProvider_TanStackProvider_tsx_720f3904._.js",
@@ -11,10 +11,13 @@
       "static/chunks/app_notes_error_module_681bbb6d.css",
       "static/chunks/app_notes_56ef1228._.js",
       "static/chunks/app_notes_error_tsx_4f485d55._.js",
-      "static/chunks/node_modules_7766a22d._.js",
-      "static/chunks/_eb8f9fc1._.js",
-      "static/chunks/_25dc4c9e._.css",
-      "static/chunks/app_notes_page_tsx_4f485d55._.js",
+      "static/chunks/app_notes_[id]_error_module_68e43d0e.css",
+      "static/chunks/app_notes_[id]_a8aedfb5._.js",
+      "static/chunks/app_notes_[id]_error_tsx_4f485d55._.js",
+      "static/chunks/node_modules_8b062342._.js",
+      "static/chunks/_aa5c3d5d._.js",
+      "static/chunks/_7e722112._.css",
+      "static/chunks/app_notes_[id]_page_tsx_4f485d55._.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_6aaa83c7._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js",
       "static/chunks/node_modules_next_dist_compiled_next-devtools_index_d575f738.js",

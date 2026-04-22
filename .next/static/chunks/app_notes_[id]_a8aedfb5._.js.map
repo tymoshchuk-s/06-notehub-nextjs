@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/notes/[id]/error.module.css [app-client] (css module)"],"sourcesContent":["__turbopack_context__.v({\n  \"container\": \"error-module__0sjZ0W__container\",\n  \"reset\": \"error-module__0sjZ0W__reset\",\n  \"text\": \"error-module__0sjZ0W__text\",\n});\n"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA"}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///home/paris/Desktop/goit_projects/react.js%2Bnext.js/06-notehub-nextjs/app/notes/%5Bid%5D/error.tsx"],"sourcesContent":["\"use client\";\nimport css from \"./error.module.css\";\ntype ErrorProps = {\n  error: Error;\n};\n\nconst Error = ({ error }: ErrorProps) => {\n  return (\n    <div>\n      <p className={css.text}>Could not fetch note details. {error.message}</p>\n    </div>\n  );\n};\n\nexport default Error;\n"],"names":[],"mappings":";;;;AACA;AADA;;;AAMA,MAAM,QAAQ;QAAC,EAAE,KAAK,EAAc;IAClC,qBACE,6LAAC;kBACC,cAAA,6LAAC;YAAE,WAAW,8IAAA,CAAA,UAAG,CAAC,IAAI;;gBAAE;gBAA+B,MAAM,OAAO;;;;;;;;;;;;AAG1E;KANM;uCAQS","debugId":null}}]
+}

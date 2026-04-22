@@ -1,0 +1,14 @@
+/* [project]/components/ErrorMessage/ErrorMessage.module.css [app-client] (css) */
+.ErrorMessage-module__bzyCla__text {
+  text-align: center;
+  color: #dc3545;
+  background-color: #fdecea;
+  border: 1px solid #e58a8a;
+  border-radius: 6px;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=components_ErrorMessage_ErrorMessage_module_css_e59ae46c._.single.css.map*/
