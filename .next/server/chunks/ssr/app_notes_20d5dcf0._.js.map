@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/notes/error.module.css [app-ssr] (css module)"],"sourcesContent":["__turbopack_context__.v({\n  \"container\": \"error-module__1twf8q__container\",\n  \"reset\": \"error-module__1twf8q__reset\",\n  \"text\": \"error-module__1twf8q__text\",\n});\n"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA"}},
-    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///home/paris/Desktop/goit_projects/react.js%2Bnext.js/06-notehub-nextjs/app/notes/error.tsx"],"sourcesContent":["\"use client\";\nimport css from \"./error.module.css\";\n\ntype ErrorProps = {\n  error: Error;\n  reset: () => void;\n};\n\nconst Error = ({ error, reset }: ErrorProps) => {\n  return (\n    <div className={css.container}>\n      <p className={css.text}>\n        Could not fetch the list of notes. {error.message}\n      </p>\n      <button className={css.reset} onClick={reset}>\n        RESET\n      </button>\n    </div>\n  );\n};\n\nexport default Error;\n"],"names":[],"mappings":";;;;AACA;AADA;;;AAQA,MAAM,QAAQ,CAAC,EAAE,KAAK,EAAE,KAAK,EAAc;IACzC,qBACE,8OAAC;QAAI,WAAW,iIAAA,CAAA,UAAG,CAAC,SAAS;;0BAC3B,8OAAC;gBAAE,WAAW,iIAAA,CAAA,UAAG,CAAC,IAAI;;oBAAE;oBACc,MAAM,OAAO;;;;;;;0BAEnD,8OAAC;gBAAO,WAAW,iIAAA,CAAA,UAAG,CAAC,KAAK;gBAAE,SAAS;0BAAO;;;;;;;;;;;;AAKpD;uCAEe","debugId":null}}]
-}
